@@ -4,6 +4,7 @@ package com.apps.washington.moviemammal.utils;
  * Created by Brent on 3/5/2018.
  */
 
+import android.net.Uri;
 import android.util.Log;
 
 import com.apps.washington.moviemammal.constructor.Movie;
@@ -19,10 +20,22 @@ import java.util.ArrayList;
  */
 public final class QueryUtils {
 
+    // TODO The poster won't display. Fix E/BitmapFactory: Unable to decode stream: java.io.FileNotFoundException
+
     /**
      * Log tag
      */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
+
+    /**
+     * The base URL for the movie poster
+     *
+     * The size is w185
+     *
+     * The value extracted from the key "poster_path" will be appended to this URL for
+     * the movie poster
+     */
+    private static final String POSTER_BASE_URL = "http://image.tmdb.org/t/p/w185/";
 
     /**
      * Hardcoded JSON response for popular movies
@@ -59,12 +72,21 @@ public final class QueryUtils {
                 String title = firstResult.getString("title");
                 // Extract the value at the key called "vote_average"
                 String voteAverage = firstResult.getString("vote_average");
+                // Extract the value at the key called "poster_path"
+                String posterPath = firstResult.getString("poster_path");
+                /*
+                 Create a String combining the base URL and extracted poster path, which
+                 creates the URL for each movie poster
+                  */
+                String moviePoster = POSTER_BASE_URL + posterPath;
+                // Convert the movie poster String into a Uri object
+                Uri posterUri = Uri.parse(moviePoster);
 
                 /*
-                 Create a new Movie object with the title and vote average from
+                 Create a new Movie object with the title, vote average, and poster from
                  the JSON response
                   */
-                Movie movie = new Movie(title, voteAverage);
+                Movie movie = new Movie(title, voteAverage, posterUri);
 
                 // Add the Movie object to the popular movies ArrayList
                 popularMoviesList.add(movie);
@@ -72,7 +94,7 @@ public final class QueryUtils {
             // Catch a JSONException and print to logs if there was a parsing error
             // Stops the app from crashing
         } catch (JSONException e) {
-            Log.e(LOG_TAG, "Problem parsing the popular movie data", e);
+            Log.e(LOG_TAG, "Problem parsing the movie data", e);
         }
 
         // Return the list of popular movies

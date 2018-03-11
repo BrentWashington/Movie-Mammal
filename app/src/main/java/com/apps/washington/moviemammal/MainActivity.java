@@ -36,17 +36,13 @@ public class MainActivity extends AppCompatActivity {
         gridView.setAdapter(adapter);
 
         /*
-         Set an item click listener on the ListView. It sends an intent to a web browser
-         to open a website with more information about the selected movie
+         Set an item click listener on the ListView.
           */
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 // Find the current movie that was clicked on
                 Movie currentMovie = adapter.getItem(position);
-                Uri movieUri = Uri.parse("https://www.themoviedb.org/");
-                Intent webIntent = new Intent(Intent.ACTION_VIEW, movieUri);
-                startActivity(webIntent);
             }
         });
     }

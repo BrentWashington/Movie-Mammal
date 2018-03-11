@@ -2,12 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?android:listPreferredItemHeight"
-    android:orientation="vertical">
+    android:layout_height="?android:listPreferredItemHeightLarge"
+    android:orientation="horizontal">
 
+    <!-- The movie poster view -->
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/moviePoster"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            tools:src="@mipmap/ic_launcher" />
+
+    </LinearLayout>
+
+    <!-- The movie details view -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         android:orientation="vertical">
 
@@ -15,9 +29,8 @@
             android:id="@+id/movieTitle"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:maxLines="3"
-            android:textAppearance="?android:textAppearanceListItem"
+            android:layout_weight="2"
+            android:maxLines="2"
             android:textColor="@color/black"
             android:textStyle="bold"
             tools:text="Black Panther" />

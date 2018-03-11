@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.apps.washington.moviemammal.R;
 import com.apps.washington.moviemammal.constructor.Movie;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -68,6 +70,14 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
         TextView voteAverageTextView = listItemView.findViewById(R.id.movieVoteAverage);
         voteAverageTextView.setText(currentMovie.getMovieVoteAverage());
+
+        // Find the ImageView in the list_item.xml layout with the ID "moviePoster"
+        ImageView poster = listItemView.findViewById(R.id.moviePoster);
+        /*
+        Get the poster from the current Movie object as a URI and set it on the
+        poster ImageView
+         */
+        poster.setImageURI(currentMovie.getPoster());
 
         return listItemView;
     }
