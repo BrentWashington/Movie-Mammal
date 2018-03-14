@@ -1,6 +1,7 @@
 package com.apps.washington.moviemammal.adapter;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -73,12 +74,15 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
         // Find the ImageView in the list_item.xml layout with the ID "moviePoster"
         ImageView poster = listItemView.findViewById(R.id.moviePoster);
+        // Create a URI object with the poster URI for the current movie
+        Uri posterUri = currentMovie.getPoster();
         /*
-        Get the poster from the current Movie object as a URI and set it on the
-        poster ImageView
-         */
-        poster.setImageURI(currentMovie.getPoster());
+         With Picasso, get the context, load the posterUri, and convert it into
+         an ImageView
+          */
+        Picasso.with(getContext()).load(posterUri).into(poster);
 
+        // Return the list item view
         return listItemView;
     }
 }
