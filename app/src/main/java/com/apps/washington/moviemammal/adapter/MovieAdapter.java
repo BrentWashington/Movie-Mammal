@@ -26,13 +26,11 @@ import java.util.ArrayList;
  */
 public class MovieAdapter extends ArrayAdapter<Movie> {
 
-    private static final String LOG_TAG = MovieAdapter.class.getSimpleName();
-
     /**
-     * Constructor
+     * Custom Constructor for the adapter
      *
      * @param context The current context. Used to inflate the layout file
-     * @param movies A list of Movie objects to display in the list
+     * @param movies  A list of Movie objects to display in the list
      */
     public MovieAdapter(Activity context, ArrayList<Movie> movies) {
         // Initialize the ArrayAdapter storage for the context and the list
@@ -42,10 +40,10 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
     /**
      * Provides a view for an AdapterView (e.g. ListView)
      *
-     * @param position The position in the list of data that should be displayed in the
-     *                 list item view
+     * @param position    The position in the list of data that should be displayed in the
+     *                    list item view
      * @param convertView The recycled view to populate
-     * @param parent The parent ViewGroup that is used for inflation
+     * @param parent      The parent ViewGroup that is used for inflation
      * @return The View for the position in the AdapterView
      */
     @NonNull

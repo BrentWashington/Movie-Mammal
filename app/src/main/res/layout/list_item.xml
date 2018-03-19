@@ -6,17 +6,17 @@
     android:orientation="horizontal">
 
     <!-- The movie poster view -->
-    <LinearLayout
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/moviePoster"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:src="@mipmap/ic_launcher" />
 
-    </LinearLayout>
+    </FrameLayout>
 
     <!-- The movie details view -->
     <LinearLayout

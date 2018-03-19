@@ -17,8 +17,7 @@ public class Movie {
     private String mMovieTitle;
 
     /**
-     * The vote average for the movie according to "The Movie Database" (This is
-     * temporary. It'll be replaced with rating)
+     * The vote average for the movie
      */
     private String mMovieVoteAverage;
 
